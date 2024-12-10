@@ -1,7 +1,3 @@
-GET http://localhost:8080/events HTTP/1.1
-
-###
-
 POST http://localhost:8080/events HTTP/1.1
 content-type: application/json
 
@@ -11,3 +7,12 @@ content-type: application/json
     "location": "location",
     "dateTime": "2025-01-02T15:30:00.000Z"
 }
+
+### 
+
+GET http://localhost:8080/events HTTP/1.1
+
+###
+
+GET http://localhost:8080/events/1 HTTP/1.1
+
