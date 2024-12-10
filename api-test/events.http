@@ -14,5 +14,16 @@ GET http://localhost:8080/events HTTP/1.1
 
 ###
 
-GET http://localhost:8080/events/1 HTTP/1.1
+GET http://localhost:8080/events/2 HTTP/1.1
 
+###
+
+PUT http://localhost:8080/events/1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Updated event",
+    "description": "description for updated event",
+    "location": "location",
+    "dateTime": "2025-01-02T15:30:00.000Z"
+}
