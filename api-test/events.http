@@ -1,3 +1,4 @@
+# Create an event
 POST http://localhost:8080/events HTTP/1.1
 content-type: application/json
 
@@ -9,15 +10,15 @@ content-type: application/json
 }
 
 ### 
-
+# Get all events
 GET http://localhost:8080/events HTTP/1.1
 
 ###
-
+# Get event by id
 GET http://localhost:8080/events/2 HTTP/1.1
 
 ###
-
+# Update event by id
 PUT http://localhost:8080/events/1 HTTP/1.1
 content-type: application/json
 
@@ -27,3 +28,7 @@ content-type: application/json
     "location": "location",
     "dateTime": "2025-01-02T15:30:00.000Z"
 }
+
+###
+# Delete event by id
+DELETE http://localhost:8080/events/1 HTTP/1.1

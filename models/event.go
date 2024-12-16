@@ -82,9 +82,15 @@ func (event Event) Update() error {
 		WHERE id = ?
 	`
 	_, err := db.DB.Exec(query, event.Name, event.Description, event.Location, event.DateTime, event.ID)
+	return err
+}
 
-	if err != nil {
-		return err
-	}
-	return nil
+func (event Event) Delete() error {
+	query := `
+		DELETE FROM events
+		WHERE id = ?
+	`
+
+	_, err := db.DB.Exec(query, event.ID)
+	return err
 }
