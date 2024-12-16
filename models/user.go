@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"github.com/mahdibouaziz/booking-api/db"
 	"github.com/mahdibouaziz/booking-api/utils"
 )
@@ -36,4 +38,26 @@ func (u *User) Save() error {
 	u.ID = id
 
 	return err
+}
+
+func (u *User) ValidateCredentails() error {
+	query := `
+		SELECT id,password
+		FROM users
+		WHERE email = ?
+	`
+	row := db.DB.QueryRow(query, u.Email)
+
+	var retrievedPassword string
+	err := row.Scan(&u.ID, &retrievedPassword)
+	if err != nil {
+		return errors.New("invalid credentails")
+	}
+
+	passwordIsValid := utils.CheckPasswordHash(u.Password, retrievedPassword)
+	if !passwordIsValid {
+		return errors.New("invalid credentails")
+	}
+
+	return nil
 }

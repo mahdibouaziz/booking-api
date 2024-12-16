@@ -9,3 +9,13 @@ content-type: application/json
 
 ### 
 
+# Login a user
+POST http://localhost:8080/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "test123"
+}
+
+### 
