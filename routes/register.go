@@ -40,4 +40,28 @@ func registerEvent(ctx *gin.Context) {
 
 }
 
-func cancelRegistration(ctx *gin.Context) {}
+func cancelRegistration(ctx *gin.Context) {
+	eventId, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": "Could not parse event id",
+		})
+		return
+	}
+
+	var event models.Event
+	event.ID = eventId
+
+	userId := ctx.GetInt64("userId")
+	err = event.CancelRegistration(userId)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Could cancel registration for the event",
+		})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "registeration cancelled",
+	})
+}
