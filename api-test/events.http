@@ -20,11 +20,12 @@ GET http://localhost:8080/events/2 HTTP/1.1
 
 ###
 # Update event by id
-PUT http://localhost:8080/events/1 HTTP/1.1
+PUT http://localhost:8080/events/10 HTTP/1.1
 content-type: application/json
+Authorization: TOKEN_HERE
 
 {
-    "name": "Updated event",
+    "name": "Updated event2",
     "description": "description for updated event",
     "location": "location",
     "dateTime": "2025-01-02T15:30:00.000Z"
