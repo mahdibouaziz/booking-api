@@ -1,6 +1,7 @@
 # Create an event
 POST http://localhost:8080/events HTTP/1.1
 content-type: application/json
+Authorization: TOKEN_HERE
 
 {
     "name": "Test event",
